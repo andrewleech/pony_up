@@ -5,16 +5,19 @@ __author__ = 'luckydonald'
 
 here = path.abspath(path.dirname(__file__))
 
-long_description = """This will add a module for simple database migrations to PonyORM."""
+# Get the long description from the README file
+with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
+    long_description = f.read()
 
 setup(
-    name='pony_up', version="0.1.1",
+    name='pony_up',
+    use_scm_version=True,
     description='Migrations for PonyORM',
     long_description=long_description,
     # The project's main homepage.
-    url='https://github.com/luckydonald/teleflask',
+    url='https://github.com/luckydonald/pony_up',
     # Author details
-    author='luckydonald',
+    author=__author__,
     author_email='code@luckydonald.de',
     # Choose your license
     license='GPLv3+',
@@ -53,9 +56,12 @@ setup(
     # project is installed. For an analysis of "install_requires" vs pip's
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
+    setup_requires=[
+        "setuptools_scm"  # For automatic version numbers
+    ],
     install_requires=[
         "pony",  # PonyORM itself
-        "luckydonald-utils>=0.52",  # general utils
+        "setuptools_scm"
     ]
     # List additional groups of dependencies here (e.g. development dependencies).
     # You can install these using the following syntax, for example:
